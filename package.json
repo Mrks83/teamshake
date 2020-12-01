@@ -1,0 +1,26 @@
+{
+  "name": "teamshake",
+  "version": "1.0.0",
+  "description": "Simple page to create random teams",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "shake.js": "^1.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "rollup": "^2.33.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-filesize": "^9.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-progress": "^1.1.2"
+  }
+}
