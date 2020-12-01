@@ -39,8 +39,8 @@ class TeamShaker {
         return Math.ceil(pupils.length / this.teams);
     }
 
-    static get subject() {
-        return document.getElementById('subject').value;
+    static get skill() {
+        return document.getElementById('skill').value;
     }
 
     static shake() {
@@ -53,15 +53,15 @@ class TeamShaker {
 
         // partition
         pupils.sort((a, b) => {
-            if (TeamShaker.subject) {
-                const suVal = (b[TeamShaker.subject] ?? 0) - (a[TeamShaker.subject] ?? 0);
-                if (suVal !== 0) {
-                    return suVal;
+            if (TeamShaker.skill) {
+                const skillScore = (b[TeamShaker.skill] ?? 0) - (a[TeamShaker.skill] ?? 0);
+                if (skillScore !== 0) {
+                    return skillScore;
                 }
             }
-            const scVal = (b.socialCompetence ?? 0) - (a.socialCompetence ?? 0);
-            if (scVal !== 0) {
-                return scVal;
+            const socialScore = (b.socialCompetence ?? 0) - (a.socialCompetence ?? 0);
+            if (socialScore !== 0) {
+                return socialScore;
             }
 
             return Math.random() - Math.random();
@@ -73,8 +73,8 @@ class TeamShaker {
                     return lVal;
                 }
 
-                const aScore = a.map((p) => (TeamShaker.subject ? p[TeamShaker.subject] : p.socialCompetence) ?? 0).reduce((x, y) => x + y, 0);
-                const bScore = b.map((p) => (TeamShaker.subject ? p[TeamShaker.subject] : p.socialCompetence) ?? 0).reduce((x, y) => x + y, 0);
+                const aScore = a.map((p) => (TeamShaker.skill ? p[TeamShaker.skill] : p.socialCompetence) ?? 0).reduce((x, y) => x + y, 0);
+                const bScore = b.map((p) => (TeamShaker.skill ? p[TeamShaker.skill] : p.socialCompetence) ?? 0).reduce((x, y) => x + y, 0);
                 const sVal = aScore - bScore;
                 if (sVal !== 0) {
                     return sVal;
@@ -90,9 +90,9 @@ class TeamShaker {
             teamsElement.innerHTML += `
             <div class="col-6 col-lg-3 mb-3">
                 <h5>Team ${i+1}
-                <small class="card-text text-muted">Score ${t.map((p) => (TeamShaker.subject ? p[TeamShaker.subject] : p.socialCompetence) ?? 0).reduce((a, c) => a + c )}</small>
+                <small class="card-text text-muted">Score ${t.map((p) => (TeamShaker.skill ? p[TeamShaker.skill] : p.socialCompetence) ?? 0).reduce((a, c) => a + c )}</small>
                 </h5>
-                ${t.map((p) => `${p.name} (${(TeamShaker.subject ? p[TeamShaker.subject] : p.socialCompetence) ?? 0})`).join('<br>')}
+                ${t.map((p) => `${p.name} (${(TeamShaker.skill ? p[TeamShaker.skill] : p.socialCompetence) ?? 0})`).join('<br>')}
             </div>
             `;
         });
